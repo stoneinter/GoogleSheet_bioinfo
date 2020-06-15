@@ -719,3 +719,140 @@ function Mutation2Codon(inputstring1,inputstring2) {
 
 //calc_charge
 
+/**
+ * @file Painting specific characters in cells
+ * {@link https://support.google.com/docs/thread/11987044}
+ * https://github.com/contributorpw/google-apps-script-snippets/blob/master/snippets/sheets/spreadsheet_painting-specific-characters/painting-specific-characters.js
+ */
+
+/**
+ * Runs the snippet
+ */
+function runAA() {
+  var range = SpreadsheetApp.getActiveRange();
+  paintingSpecificCharacters_(range);
+//  paintingSpecificCharacters_(range, 'E', 'red');
+//  paintingSpecificCharacters_(range, 'K', 'blue');
+//  paintingSpecificCharacters_(range, 'R', 'blue');
+//  paintingSpecificCharacters_(range, 'H', 'blue');
+}
+
+
+/**
+ * Runs the snippet
+ */
+function runSS() {
+  var range = SpreadsheetApp.getActiveRange();
+  paintingSpecificCharactersSS_(range);
+}
+
+
+/**
+ *
+ * @param {GoogleAppsScript.Spreadsheet.Range} range
+ * @param {string} char
+ * @param {string} color
+ */
+function paintingSpecificCharacters_(range) {
+  var textStyleBuilder = SpreadsheetApp.newTextStyle();
+  var textStyle_red = textStyleBuilder.setForegroundColor('red').build();
+  var textStyle_blue = textStyleBuilder.setForegroundColor('blue').build();
+  var textStyle_grey = textStyleBuilder.setForegroundColor('grey').build();
+  var textStyle_black = textStyleBuilder.setForegroundColor('black').build();
+  var textStyle_green = textStyleBuilder.setForegroundColor('green').build();
+  var textStyle_yellow = textStyleBuilder.setForegroundColor('yellow').build();
+  
+//  var length = char.length;
+  
+  var richTextValues = range.getRichTextValues().map(function(row) {
+    return row.map(function(richTextValue) {
+      var value = richTextValue.getText();
+      var richTextBuilder = SpreadsheetApp.newRichTextValue();
+      richTextBuilder.setText(value);
+      //this part we can potentially add different colors
+      //each values need to be adjusted
+      
+      //simple loop through value
+      for (var i = 0; i < value.length; i++) {
+        if ((value[i] == 'D') || (value[i] == 'E')) {
+          richTextBuilder.setTextStyle(i, i+1, textStyle_red)
+        }
+        else if ((value[i] == 'R') || (value[i] == 'K') || (value[i] == 'H') ) { 
+          richTextBuilder.setTextStyle(i, i+1, textStyle_blue)
+        }
+        else if ((value[i] == 'F') || (value[i] == 'W') || (value[i] == 'Y') || (value[i] == 'I') || (value[i] == 'L') || (value[i] == 'V') ) { 
+          richTextBuilder.setTextStyle(i, i+1, textStyle_black)
+        }
+        else if ((value[i] == 'P')) { 
+          richTextBuilder.setTextStyle(i, i+1, textStyle_green)
+        }
+        else if ((value[i] == 'C')) { 
+          richTextBuilder.setTextStyle(i, i+1, textStyle_yellow)
+        }
+        else {
+        richTextBuilder.setTextStyle(i, i+1, textStyle_grey)
+        }
+      }
+//      var indexOf = value.indexOf(char);
+//      while (indexOf > -1) {
+//        richTextBuilder.setTextStyle(indexOf, indexOf + length, textStyle);
+//        indexOf = value.indexOf(char, indexOf + length);
+//      }
+//      
+      return richTextBuilder.build();
+    });
+  });
+
+  range.setRichTextValues(richTextValues);
+}
+
+
+/**
+ *
+ * @param {GoogleAppsScript.Spreadsheet.Range} range
+ * @param {string} char
+ * @param {string} color
+ */
+function paintingSpecificCharactersSS_(range) {
+  var textStyleBuilder = SpreadsheetApp.newTextStyle();
+  var textStyle_red = textStyleBuilder.setForegroundColor('red').build();
+  var textStyle_blue = textStyleBuilder.setForegroundColor('blue').build();
+  var textStyle_grey = textStyleBuilder.setForegroundColor('grey').build();
+  var textStyle_black = textStyleBuilder.setForegroundColor('black').build();
+  var textStyle_green = textStyleBuilder.setForegroundColor('green').build();
+  var textStyle_yellow = textStyleBuilder.setForegroundColor('yellow').build();
+  
+//  var length = char.length;
+  
+  var richTextValues = range.getRichTextValues().map(function(row) {
+    return row.map(function(richTextValue) {
+      var value = richTextValue.getText();
+      var richTextBuilder = SpreadsheetApp.newRichTextValue();
+      richTextBuilder.setText(value);
+      //this part we can potentially add different colors
+      //each values need to be adjusted
+      
+      //simple loop through value
+      for (var i = 0; i < value.length; i++) {
+        if (value[i] == 'E') {
+          richTextBuilder.setTextStyle(i, i+1, textStyle_red)
+        }
+        else if (value[i] == 'H' ) { 
+          richTextBuilder.setTextStyle(i, i+1, textStyle_blue)
+        }
+        else if ((value[i] == 'C')) { 
+          richTextBuilder.setTextStyle(i, i+1, textStyle_grey)
+        }
+      }
+//      var indexOf = value.indexOf(char);
+//      while (indexOf > -1) {
+//        richTextBuilder.setTextStyle(indexOf, indexOf + length, textStyle);
+//        indexOf = value.indexOf(char, indexOf + length);
+//      }
+//      
+      return richTextBuilder.build();
+    });
+  });
+
+  range.setRichTextValues(richTextValues);
+}
