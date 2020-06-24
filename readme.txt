@@ -1,4 +1,5 @@
 #summary to publish addon
+#https://gsuite.google.com/marketplace/app/appname/979043584139
 #https://developers.google.com/apps-script/guides/cloud-platform-projects#completing_the_oauth_consent_screen
 
 1. script settings and connect that to cloud API project
