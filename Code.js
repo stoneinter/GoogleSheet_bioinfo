@@ -6,6 +6,7 @@
 /**
  * The event handler triggered when opening the spreadsheet.
  * @param {Event} e The onOpen event.
+ * @private
  */
 function onOpen(e) {
   // Add a custom menu to the spreadsheet.
@@ -26,6 +27,7 @@ function onOpen(e) {
 /**
  * The event handler triggered when installing the add-on.
  * @param {Event} e The onInstall event.
+ * @private
  */
 function onInstall(e) {
   onOpen(e);
@@ -65,15 +67,14 @@ function showHelp() {
 //  SpreadsheetApp.getUi().showSidebar(html);
 }
 
-/**
- * @file Painting specific characters in cells
- * {@link https://support.google.com/docs/thread/11987044}
- * https://github.com/contributorpw/google-apps-script-snippets/blob/master/snippets/sheets/spreadsheet_painting-specific-characters/painting-specific-characters.js
- */
+// @file Color Character by Amino Acid type
+//{@link https://support.google.com/docs/thread/11987044}
+//https://github.com/contributorpw/google-apps-script-snippets/blob/master/snippets/sheets/spreadsheet_painting-specific-characters/painting-specific-characters.js
 
 /**
- * Runs the snippet
- */
+  *@private
+  *@customfunction
+*/
 function runAA() {
   var range = SpreadsheetApp.getActiveRange();
   paintingSpecificCharacters_(range);
@@ -83,10 +84,10 @@ function runAA() {
 //  paintingSpecificCharacters_(range, 'H', 'blue');
 }
 
-
 /**
- * Runs the snippet
- */
+  *@private
+  *@customfunction
+*/
 function runSS() {
   var range = SpreadsheetApp.getActiveRange();
   paintingSpecificCharactersSS_(range);
@@ -98,6 +99,7 @@ function runSS() {
  * @param {GoogleAppsScript.Spreadsheet.Range} range
  * @param {string} char
  * @param {string} color
+ * @private
  */
 function paintingSpecificCharacters_(range) {
   var textStyleBuilder = SpreadsheetApp.newTextStyle();
@@ -158,6 +160,7 @@ function paintingSpecificCharacters_(range) {
  * @param {GoogleAppsScript.Spreadsheet.Range} range
  * @param {string} char
  * @param {string} color
+ * @private
  */
 function paintingSpecificCharactersSS_(range) {
   var textStyleBuilder = SpreadsheetApp.newTextStyle();
@@ -556,6 +559,7 @@ function writeRestrictionSites(sequence, arrayOfItems, dnaConformation) {
   *@param {string} sequenceRecord Input DNA/protein sequence
   *@return sequence compoent
   *@customfunction
+  *@private
 */
 function getSequenceFromFasta(sequenceRecord) {
   if (sequenceRecord.map) {
@@ -1446,7 +1450,8 @@ class AlignPairQuad {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/sms_common.js
 //http://www.bioinformatics.org/sms2/rev_comp.html
 /**
-  *Function to complement counterpart of input DNA sequence. http://www.bioinformatics.org/sms2/rev_comp.html
+  *Function to complement counterpart of input DNA sequence. 
+  *{@link http://www.bioinformatics.org/sms2/rev_comp.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
   *@return complement of input DNA sequence
@@ -1521,7 +1526,8 @@ function complement(dnaSequence) {
 }
 
 /**
-  *Function to convert degenerate base in a sequence. reference https://www.bioinformatics.org/sms/iupac.html
+  *Function to convert degenerate base in a sequence.
+  *{@link https://www.bioinformatics.org/sms/iupac.html}
   *
   *@param {sequence} sequence Input DNA sequence
   *@return degenerate base in a sequence
@@ -1567,7 +1573,8 @@ function convertDegenerates(sequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/sms_common.js
 //http://www.bioinformatics.org/sms2/rev_comp.html
 /**
-  *Function to reverse counterpart of input DNA sequence. http://www.bioinformatics.org/sms2/rev_comp.html
+  *Function to reverse counterpart of input DNA sequence. 
+  *{@link http://www.bioinformatics.org/sms2/rev_comp.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
   *@return reverse of input DNA sequence
@@ -1594,7 +1601,8 @@ function reverse(dnaSequence) {
 //hhttps://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/rev_comp.js
 //http://www.bioinformatics.org/sms2/rev_comp.html
 /**
-  *Function to reverse-complement counterpart of input DNA sequence. http://www.bioinformatics.org/sms2/rev_comp.html
+  *Function to reverse-complement counterpart of input DNA sequence. 
+  *{@link http://www.bioinformatics.org/sms2/rev_comp.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
   *@return reverse-complement of input DNA sequence
@@ -2281,10 +2289,11 @@ function getGeneticCodeString(type) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/translate.js
 //http://www.bioinformatics.org/sms2/translate.html
 /**
-  *Function to converts DNA into a protein in the reading frame. http://www.bioinformatics.org/sms2/translate.html
+  *Function to converts DNA into a protein in the reading frame. 
+  *{@link http://www.bioinformatics.org/sms2/translate.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
-  *@param {"standard"} type standard (default) or transl_table=1 etc see http://www.bioinformatics.org/sms2/genetic_code.html 
+  *@param {"standard"} type standard (default) or transl_table=1 etc see {@link http://www.bioinformatics.org/sms2/genetic_code.html}
   *@return translated DNA sequence
   *@customfunction
 */
@@ -2327,7 +2336,8 @@ function translate(dnaSequence,type="standard") {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/protein_mw.js
 //http://www.bioinformatics.org/sms2/protein_mw.html
 /**
-  *Function to calculate MW (kDa) of protein sequence. http://www.bioinformatics.org/sms2/protein_mw.html
+  *Function to calculate MW (kDa) of protein sequence. 
+  *{@link http://www.bioinformatics.org/sms2/protein_mw.html}
   *
   *@param {proteinSequence} proteinSequence Input Protein sequence
   *@return MW (kDa) of protein sequence
@@ -2448,7 +2458,8 @@ function Seq3(proteinSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/sms_common.js
 //http://www.bioinformatics.org/sms2/three_to_one.html
 /**
-  *Function to convert three letters AA sequence to one letter. http://www.bioinformatics.org/sms2/three_to_one.html
+  *Function to convert three letters AA sequence to one letter. 
+  *{@link http://www.bioinformatics.org/sms2/three_to_one.html}
   *
   *@param {string} proteinSequence Input Protein three letter sequence
   *@return one letter sequence of three letters sequence
@@ -2497,7 +2508,8 @@ function Seq1(proteinSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/protein_stats.js
 //http://www.bioinformatics.org/sms2/protein_stats.html
 /**
-  *Function to calculate protein stats. http://www.bioinformatics.org/sms2/protein_stats.html
+  *Function to calculate protein stats. 
+  *{@link http://www.bioinformatics.org/sms2/protein_stats.html}
   *
   *@param {proteinSequence} proteinSequence Input Protein one letter sequence
   *@return AA composition stats of input protein
@@ -2571,7 +2583,8 @@ function proteinStats(proteinSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/dna_stats.js
 //http://www.bioinformatics.org/sms2/dna_stats.html
 /**
-  *Function to DNA stats of a sequence. http://www.bioinformatics.org/sms2/dna_stats.html
+  *Function to DNA stats of a sequence. 
+  *{@link http://www.bioinformatics.org/sms2/dna_stats.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
   *@return NT composition stats of Input DNA sequence
@@ -2661,7 +2674,8 @@ function dnaStats(dnaSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/protein_gravy.js
 //http://www.bioinformatics.org/sms2/protein_gravy.html
 /**
-  *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. http://www.bioinformatics.org/sms2/protein_gravy.html
+  *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. 
+  *{@link http://www.bioinformatics.org/sms2/protein_gravy.html}
   *
   *@param {proteinSequence} proteinSequence Input Protein one letter sequence
   *@return GRAVY of input protein
@@ -2725,7 +2739,8 @@ function proteinGravy(proteinSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/protein_iep.js
 //http://www.bioinformatics.org/sms2/protein_iep.html
 /**
-  *Function to calculate theoretical pI (isoelectric point) for the protein sequence. http://www.bioinformatics.org/sms2/protein_iep.html
+  *Function to calculate theoretical pI (isoelectric point) for the protein sequence.
+  *{@link http://www.bioinformatics.org/sms2/protein_iep.html}
   *
   *@param {proteinSequence} proteinSequence Input Protein one letter sequence
   *@param {"DTAselect"} pKSet DTAselect (default) or EMBOSS
@@ -2857,7 +2872,8 @@ function proteinIep(proteinSequence, pKSet="DTAselect") {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/dna_mw.js
 //http://www.bioinformatics.org/sms2/dna_mw.html
 /**
-  *Function to calculate calculates molecular weight (Da) of either single stranded or double stranded DNA. http://www.bioinformatics.org/sms2/dna_mw.html
+  *Function to calculate calculates molecular weight (Da) of either single stranded or double stranded DNA. 
+  *{@link http://www.bioinformatics.org/sms2/dna_mw.html}
   *
   *@param {dnaSequence} sequence Input DNA
   *@param {"double"} strandType double (default) or single
@@ -3022,7 +3038,8 @@ function dnaMw(sequence,strandType="double",topology="linear") {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/pairwise_align_protein.js
 //http://www.bioinformatics.org/sms2/pairwise_align_protein.html
 /**
-  *Function to determines the optimal global alignment of two protein sequences. http://www.bioinformatics.org/sms2/pairwise_align_protein.html
+  *Function to determines the optimal global alignment of two protein sequences. 
+  *{@link http://www.bioinformatics.org/sms2/pairwise_align_protein.html}
   *
   *@param {proteinSequenceOne} proteinSequenceOne Input Protein One
   *@param {proteinSequenceTwo} proteinSequenceTwo Input Protein Two
@@ -3084,15 +3101,16 @@ function pairwiseAlignProtein(proteinSequenceOne,proteinSequenceTwo,matrix="blos
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/pairwise_align_dna.js
 //http://www.bioinformatics.org/sms2/pairwise_align_dna.html
 /**
-  *Function to determines the optimal global alignment of two dna sequences. http://www.bioinformatics.org/sms2/pairwise_align_dna.html
+  *Function to determines the optimal global alignment of two dna sequences. 
+  *{@link http://www.bioinformatics.org/sms2/pairwise_align_dna.html}
   *
   *@param {dnaSequenceOne} dnaSequenceOne Input DNA One
   *@param {dnaSequenceTwo} dnaSequenceTwo Input DNA Two
-  *@param {2} matchScore default 2
-  *@param {-1} mismatchScore default -1
-  *@param {2} gapPenalty default 2
-  *@param {0} beginGapPenalty default 0
-  *@param {0} endGapPenalty default 0
+  *@param {matchScore} matchScore default 2
+  *@param {mismatchScore} mismatchScore default -1
+  *@param {gapPenalty} gapPenalty default 2
+  *@param {beginGapPenalty} beginGapPenalty default 0
+  *@param {endGapPenalty} endGapPenalty default 0
   *@return alignment of two protein
   *@customfunction
 */
@@ -3151,7 +3169,8 @@ function pairwiseAlignDna(dnaSequenceOne,dnaSequenceTwo,matchScore=2,mismatchSco
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/rest_summary.js
 //http://www.bioinformatics.org/sms2/rest_summary.html
 /**
-  *Function to returns the number of commonly used restriction endonuclease cut sites of input DNA sequences. http://www.bioinformatics.org/sms2/rest_summary.html
+  *Function to returns the number of commonly used restriction endonuclease cut sites of input DNA sequences.
+  *{@link  http://www.bioinformatics.org/sms2/rest_summary.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
   *@param {"circular"} type DNA sequence type: linear or circular (default)
@@ -3292,7 +3311,8 @@ function Mutation2Codon(dnaSequence,mutationlist) {
 //http://www.bioinformatics.org/sms2/pcr_primer_stats.html
 //https://pdfs.semanticscholar.org/2725/9a0cfbf8f154bece9836db8b7e9fea7d71a1.pdf
 /**
-  *Function to report describe the properties of a primer, including melting temperature, percent GC content, and PCR suitability. http://www.bioinformatics.org/sms2/pcr_primer_stats.html
+  *Function to report describe the properties of a primer, including melting temperature, percent GC content, and PCR suitability. 
+  *{@link http://www.bioinformatics.org/sms2/pcr_primer_stats.html}
   *
   *@param {dnaSequence} dnaSequence Input DNA sequence
   *@param {false} isPhosphorylated default (false)
@@ -4514,7 +4534,8 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
 ////https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/pcr_primer_stats.js
 ////http://www.bioinformatics.org/sms2/pcr_primer_stats.html
 ///**
-//  *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. http://www.bioinformatics.org/sms2/pcr_primer_stats.html
+//  *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. 
+//  *{@link http://www.bioinformatics.org/sms2/pcr_primer_stats.html}
 //  *
 //  *@param {dnaSequence} dnaSequence Input DNA sequence
 //  *@return GRAVY of input protein
@@ -4556,7 +4577,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
 //  * @fileoverview referenced biopython ProteinAnalysis.molar_extinction_coefficient
 //  * @biopython
 /**
-  *Function to calculate Calculate the molar extinction coefficient (units of  M-1 cm-1, at 280 nm measured in water). https://web.expasy.org/cgi-bin/protparam/protparam
+  *Function to calculate Calculate the molar extinction coefficient (units of  M-1 cm-1, at 280 nm measured in water). {@link https://web.expasy.org/cgi-bin/protparam/protparam}
   *
   *@param {proteinSequence} proteinSequence Input Protein one letter sequence
   *@param {"reduced"} Cys oxidation state of Cys reduced (default) or disulfide
@@ -4599,8 +4620,9 @@ function MolarExtinction(proteinSequence,Cys="reduced") {
   *Function to analyze and return array{unmodified_seq, N-term, C-term, internal-mod} of peptide sequence; in the sequence, modification is enclosed in ()
   *
   *@param {peptideSequence} peptideSequence Input Protein one letter sequence
-  *@return {unmodified_seq, N-term, C-term, internal-mod}
+  *@return {SequenceModArray}
   *@customfunction
+  *@private
 */
 function peptide_mod(peptideSequence) {
  if (peptideSequence.map) {
@@ -4802,7 +4824,7 @@ function peptide_intern_mod(peptideSequence) {
   *Function to analyze and return modification list of a dna sequence; in the sequence, dna modification is enclosed in //
   *
   *@param {dnaSequence} dnaSequence Input DNA one letter sequence
-  *@return {mod1, mod2}
+  *@return {mods}
   *@customfunction
 */
 function dna_mod(dnaSequence) {
