@@ -1453,7 +1453,7 @@ class AlignPairQuad {
   *Function to complement counterpart of input DNA sequence. 
   *{@link http://www.bioinformatics.org/sms2/rev_comp.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@return complement of input DNA sequence
   *@customfunction
 */
@@ -1529,7 +1529,7 @@ function complement(dnaSequence) {
   *Function to convert degenerate base in a sequence.
   *{@link https://www.bioinformatics.org/sms/iupac.html}
   *
-  *@param {sequence} sequence Input DNA sequence
+  *@param {string} sequence Input DNA sequence
   *@return degenerate base in a sequence
   *@customfunction
 */
@@ -1576,7 +1576,7 @@ function convertDegenerates(sequence) {
   *Function to reverse counterpart of input DNA sequence. 
   *{@link http://www.bioinformatics.org/sms2/rev_comp.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@return reverse of input DNA sequence
   *@customfunction
 */
@@ -1604,7 +1604,7 @@ function reverse(dnaSequence) {
   *Function to reverse-complement counterpart of input DNA sequence. 
   *{@link http://www.bioinformatics.org/sms2/rev_comp.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@return reverse-complement of input DNA sequence
   *@customfunction
 */
@@ -2292,7 +2292,7 @@ function getGeneticCodeString(type) {
   *Function to converts DNA into a protein in the reading frame. 
   *{@link http://www.bioinformatics.org/sms2/translate.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@param {"standard"} type standard (default) or transl_table=1 etc see {@link http://www.bioinformatics.org/sms2/genetic_code.html}
   *@return translated DNA sequence
   *@customfunction
@@ -2339,7 +2339,7 @@ function translate(dnaSequence,type="standard") {
   *Function to calculate MW (kDa) of protein sequence. 
   *{@link http://www.bioinformatics.org/sms2/protein_mw.html}
   *
-  *@param {proteinSequence} proteinSequence Input Protein sequence
+  *@param {string} proteinSequence Input Protein sequence
   *@return MW (kDa) of protein sequence
   *@customfunction
 */
@@ -2400,7 +2400,7 @@ function protein_mw(proteinSequence) {
 /**
   *Function to convert one letter AA sequence to three letters
   *
-  *@param {proteinSequence} proteinSequence Input Protein one letter sequence
+  *@param {string} proteinSequence Input Protein one letter sequence
   *@return three letter sequence of one letter sequence
   *@customfunction
 */
@@ -2511,7 +2511,7 @@ function Seq1(proteinSequence) {
   *Function to calculate protein stats. 
   *{@link http://www.bioinformatics.org/sms2/protein_stats.html}
   *
-  *@param {proteinSequence} proteinSequence Input Protein one letter sequence
+  *@param {string} proteinSequence Input Protein one letter sequence
   *@return AA composition stats of input protein
   *@customfunction
 */
@@ -2586,7 +2586,7 @@ function proteinStats(proteinSequence) {
   *Function to DNA stats of a sequence. 
   *{@link http://www.bioinformatics.org/sms2/dna_stats.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@return NT composition stats of Input DNA sequence
   *@customfunction
 */
@@ -2677,7 +2677,7 @@ function dnaStats(dnaSequence) {
   *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. 
   *{@link http://www.bioinformatics.org/sms2/protein_gravy.html}
   *
-  *@param {proteinSequence} proteinSequence Input Protein one letter sequence
+  *@param {string} proteinSequence Input Protein one letter sequence
   *@return GRAVY of input protein
   *@customfunction
 */
@@ -2742,7 +2742,7 @@ function proteinGravy(proteinSequence) {
   *Function to calculate theoretical pI (isoelectric point) for the protein sequence.
   *{@link http://www.bioinformatics.org/sms2/protein_iep.html}
   *
-  *@param {proteinSequence} proteinSequence Input Protein one letter sequence
+  *@param {string} proteinSequence Input Protein one letter sequence
   *@param {"DTAselect"} pKSet DTAselect (default) or EMBOSS
   *@return theoretical pI of input protein
   *@customfunction
@@ -2875,7 +2875,7 @@ function proteinIep(proteinSequence, pKSet="DTAselect") {
   *Function to calculate calculates molecular weight (Da) of either single stranded or double stranded DNA. 
   *{@link http://www.bioinformatics.org/sms2/dna_mw.html}
   *
-  *@param {dnaSequence} sequence Input DNA
+  *@param {string} sequence Input DNA
   *@param {"double"} strandType double (default) or single
   *@param {"linear"} topology linear (default) or circular
   *@return molecular weight of DNA (Da)
@@ -3041,8 +3041,8 @@ function dnaMw(sequence,strandType="double",topology="linear") {
   *Function to determines the optimal global alignment of two protein sequences. 
   *{@link http://www.bioinformatics.org/sms2/pairwise_align_protein.html}
   *
-  *@param {proteinSequenceOne} proteinSequenceOne Input Protein One
-  *@param {proteinSequenceTwo} proteinSequenceTwo Input Protein Two
+  *@param {string} proteinSequenceOne Input Protein One
+  *@param {string} proteinSequenceTwo Input Protein Two
   *@param {"blosum62"} matrix Scoring matrix: blosum62 (default), pam30, pam70, blosum80, blosum45
   *@param {0} beginGapPenalty default 0
   *@param {2} gapPenalty default 2
@@ -3104,8 +3104,8 @@ function pairwiseAlignProtein(proteinSequenceOne,proteinSequenceTwo,matrix="blos
   *Function to determines the optimal global alignment of two dna sequences. 
   *{@link http://www.bioinformatics.org/sms2/pairwise_align_dna.html}
   *
-  *@param {dnaSequenceOne} dnaSequenceOne Input DNA One
-  *@param {dnaSequenceTwo} dnaSequenceTwo Input DNA Two
+  *@param {string} dnaSequenceOne Input DNA One
+  *@param {string} dnaSequenceTwo Input DNA Two
   *@param {matchScore} matchScore default 2
   *@param {mismatchScore} mismatchScore default -1
   *@param {gapPenalty} gapPenalty default 2
@@ -3172,7 +3172,7 @@ function pairwiseAlignDna(dnaSequenceOne,dnaSequenceTwo,matchScore=2,mismatchSco
   *Function to returns the number of commonly used restriction endonuclease cut sites of input DNA sequences.
   *{@link  http://www.bioinformatics.org/sms2/rest_summary.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@param {"circular"} type DNA sequence type: linear or circular (default)
   *@return all common restriction sites in input sequence
   *@customfunction
@@ -3199,8 +3199,8 @@ function restSummary(dnaSequence,type="circular") {
 /**
   *Function to compare two sequences (dna/protein) with same length and return their differences
   *
-  *@param {SequenceOne} SequenceOne Input one letter sequence 1
-  *@param {SequenceTwo} SequenceTwo Input one letter sequence 2
+  *@param {string} SequenceOne Input one letter sequence 1
+  *@param {string} SequenceTwo Input one letter sequence 2
   *@return sequence differences
   *@customfunction
 */
@@ -3225,7 +3225,7 @@ function SeqDiff(SequenceOne,SequenceTwo) {
 /**
   *Function to mutate protein given AA to AA at specified location
   *
-  *@param {proteinSequence} proteinSequence Input one letter sequence 1
+  *@param {string} proteinSequence Input one letter sequence 1
   *@param {"A100M"} mutationlist Comma separated mutation list in format of A#X
   *@return mutated seqeunces
   *@customfunction
@@ -3264,7 +3264,7 @@ function Mutation2Seq(proteinSequence,mutationlist) {
 /**
   *Function to mutate DNA given AA to a codon at specified location
   *
-  *@param {dnaSequence} dnaSequence Input one letter sequence 1
+  *@param {string} dnaSequence Input one letter sequence 1
   *@param {"A100ATG"} mutationlist Comma separated mutation list in format of A#ATG
   *@return mutated DNA sequence
   *@customfunction
@@ -3314,7 +3314,7 @@ function Mutation2Codon(dnaSequence,mutationlist) {
   *Function to report describe the properties of a primer, including melting temperature, percent GC content, and PCR suitability. 
   *{@link http://www.bioinformatics.org/sms2/pcr_primer_stats.html}
   *
-  *@param {dnaSequence} dnaSequence Input DNA sequence
+  *@param {string} dnaSequence Input DNA sequence
   *@param {false} isPhosphorylated default (false)
   *@return primer stats
   *@customfunction
@@ -4537,7 +4537,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
 //  *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. 
 //  *{@link http://www.bioinformatics.org/sms2/pcr_primer_stats.html}
 //  *
-//  *@param {dnaSequence} dnaSequence Input DNA sequence
+//  *@param {string} dnaSequence Input DNA sequence
 //  *@return GRAVY of input protein
 //  *@customfunction
 //*/
@@ -4559,7 +4559,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
 ///**
 //  *Function to calculate GRAVY (grand average of hydropathy) value for the protein sequences. http://www.bioinformatics.org/sms2/protein_gravy.html
 //  *
-//  *@param {proteinSequence} proteinSequence Input Protein one letter sequence
+//  *@param {string} proteinSequence Input Protein one letter sequence
 //  *@return GRAVY of input protein
 //  *@customfunction
 //*/
@@ -4579,7 +4579,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
 /**
   *Function to calculate Calculate the molar extinction coefficient (units of  M-1 cm-1, at 280 nm measured in water). {@link https://web.expasy.org/cgi-bin/protparam/protparam}
   *
-  *@param {proteinSequence} proteinSequence Input Protein one letter sequence
+  *@param {string} proteinSequence Input Protein one letter sequence
   *@param {"reduced"} Cys oxidation state of Cys reduced (default) or disulfide
   *@return Extiniction Coefficient of input protein
   *@customfunction
@@ -4619,7 +4619,7 @@ function MolarExtinction(proteinSequence,Cys="reduced") {
 /**
   *Function to analyze and return array{unmodified_seq, N-term, C-term, internal-mod} of peptide sequence; in the sequence, modification is enclosed in ()
   *
-  *@param {peptideSequence} peptideSequence Input Protein one letter sequence
+  *@param {string} peptideSequence Input Protein one letter sequence
   *@return {SequenceModArray}
   *@customfunction
   *@private
@@ -4728,7 +4728,7 @@ function peptide_mod(peptideSequence) {
 /**
   *Function to analyze and return clean peptide sequence; in the sequence, modification is enclosed in ()
   *
-  *@param {peptideSequence} peptideSequence Input Protein one letter sequence
+  *@param {string} peptideSequence Input Protein one letter sequence
   *@return clean peptide sequence
   *@customfunction
 */
@@ -4745,7 +4745,7 @@ function clean_peptide(peptideSequence) {
 /**
   *Function to analyze and return N-term  of peptide sequence; in the sequence, modification is enclosed in ()
   *
-  *@param {peptideSequence} peptideSequence Input Protein one letter sequence
+  *@param {string} peptideSequence Input Protein one letter sequence
   *@return N-term
   *@customfunction
 */
@@ -4768,7 +4768,7 @@ function peptide_Nmod(peptideSequence) {
 /**
   *Function to analyze and return C-term mod of peptide sequence; in the sequence, modification is enclosed in ()
   *
-  *@param {peptideSequence} peptideSequence Input Protein one letter sequence
+  *@param {string} peptideSequence Input Protein one letter sequence
   *@return C-term
   *@customfunction
 */
@@ -4792,7 +4792,7 @@ function peptide_Cmod(peptideSequence) {
 /**
   *Function to analyze and return C-term mod of peptide sequence; in the sequence, modification is enclosed in ()
   *
-  *@param {peptideSequence} peptideSequence Input Protein one letter sequence
+  *@param {string} peptideSequence Input Protein one letter sequence
   *@return internal-mod
   *@customfunction
 */
@@ -4823,7 +4823,7 @@ function peptide_intern_mod(peptideSequence) {
 /**
   *Function to analyze and return modification list of a dna sequence; in the sequence, dna modification is enclosed in //
   *
-  *@param {dnaSequence} dnaSequence Input DNA one letter sequence
+  *@param {string} dnaSequence Input DNA one letter sequence
   *@return {mods}
   *@customfunction
 */
