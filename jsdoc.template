@@ -1,0 +1,9 @@
+{
+    "templates": {
+        "default": {
+            "outputSourceFiles":false,
+	    "templates.default.outputSourceFiles":false,
+            "templates.default.includeDate":false
+        }
+    }
+}
