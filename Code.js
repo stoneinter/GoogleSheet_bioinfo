@@ -1,8 +1,3 @@
-// generate helper file automatically
-// make some of the functions private by adding _ to the name
-// make tests so that things do not break
-
-
 /**
  * The event handler triggered when opening the spreadsheet.
  * @param {Event} e The onOpen event.
@@ -56,12 +51,12 @@ function onInstall(e) {
 //https://developers.google.com/apps-script/guides/dialogs#code.gs_1
 //https://developers.google.com/apps-script/reference/html/html-service#createHtmlOutput(String)
 function showHelp() {
-      const htmlServ = HtmlService.createTemplateFromFile("main");
+      const htmlServ = HtmlService.createTemplateFromFile("global");
       const html = htmlServ.evaluate();
       html.setWidth(425).setHeight(300);
       const ui = SpreadsheetApp.getUi();
-//      ui.showSidebar(html);
-      ui.showModalDialog(html, "help manual for all functions")
+      ui.showSidebar(html);
+//      ui.showModalDialog(html, "help manual for all functions")
       
 //  var html = HtmlService.createHtmlOutput('<b>Hello world!</b>').setTitle('Documentation').setWidth(300);
 //  SpreadsheetApp.getUi().showSidebar(html);
