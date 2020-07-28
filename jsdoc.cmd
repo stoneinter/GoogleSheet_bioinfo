@@ -12,5 +12,21 @@ rm -rf out/; /usr/local/bin/jsdoc Code.js -c my_jsdoc.conf.json -t /usr/local/li
 
 
 #https://matthewjamestaylor.com/add-css-to-html#embed-css
-#manually add css files
 #and change the names, and remove footings
+
+head -11 out/global.html > tmp.html
+echo         '<style type="text/css" media="screen">' >> tmp.html
+#manually add css files
+for x in $(grep stylesheet out/global.html  | awk '{print $NF}' | sed 's/href="//g' | sed 's/">//g' | awk '{print "out/"$1}')
+do
+	cat $x >> tmp.html
+done
+echo '</style>' >> tmp.html
+awk 'NR>=15' out/global.html  >> tmp.html
+
+sed 's/global.html#/#/g' tmp.html | sed 's/index.html/#clean_peptide/g' | sed 's/scripts\/toc.js/https:\/\/stoneinter.github.io\/GoogleSheet_bioinfo\/out\/scripts\/toc.js/g' | sed 's/scripts\/docstrap.lib.js/https:\/\/stoneinter.github.io\/GoogleSheet_bioinfo\/out\/scripts\/docstrap.lib.js/g' > global.html
+
+/bin/rm -f tmp.html
+#
+
+
