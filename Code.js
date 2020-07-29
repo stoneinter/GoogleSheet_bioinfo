@@ -4773,7 +4773,7 @@ function peptide_Cmod(peptideSequence) {
   } else {
    var peptide_mod_array=peptide_mod(peptideSequence).split(",");
    var Cmod;
-   if ( peptide_mod_array[2]=="OH" || peptide_mod_array[1]=="no_Cmod" ) {
+   if ( peptide_mod_array[2]=="OH" || peptide_mod_array[2]=="no_Cmod" ) {
        Cmod=""
    } else {
        Cmod=peptide_mod_array[2];
