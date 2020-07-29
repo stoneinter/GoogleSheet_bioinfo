@@ -2342,26 +2342,26 @@ function protein_mw(proteinSequence) {
   
   //the weights below have water subtracted
   var arrayOfMw = [
-    "/A/ (A)71.08",
-    "/C/ (C)103.14",
-    "/D/ (D)115.09",
-    "/E/ (E)129.12",
-    "/F/ (F)147.18",
-    "/G/ (G)57.06",
-    "/H/ (H)137.15",
-    "/I/ (I)113.17",
-    "/K/ (K)128.18",
-    "/L/ (L)113.17",
-    "/M/ (M)131.21",
-    "/N/ (N)114.11",
-    "/P/ (P)97.12",
-    "/Q/ (Q)128.41",
-    "/R/ (R)156.20",
-    "/S/ (S)87.08",
-    "/T/ (T)101.11",
-    "/V/ (V)99.14",
-    "/W/ (W)186.21",
-    "/Y/ (Y)163.18",
+    "/A/ (A)71.07792",
+    "/C/ (C)103.14292",
+    "/D/ (D)115.08742",
+    "/E/ (E)129.11402",
+    "/F/ (F)147.17382",
+    "/G/ (G)57.05132",
+    "/H/ (H)137.13932",
+    "/I/ (I)113.15762",
+    "/K/ (K)128.17232",
+    "/L/ (L)113.15762",
+    "/M/ (M)131.19602",
+    "/N/ (N)114.10262",
+    "/P/ (P)97.11522",
+    "/Q/ (Q)128.12922",
+    "/R/ (R)156.18572",
+    "/S/ (S)87.07732",
+    "/T/ (T)101.10392",
+    "/V/ (V)99.13102",
+    "/W/ (W)186.20992",
+    "/Y/ (Y)163.17322",
   ];
   
   if (proteinSequence.map) {
@@ -2386,7 +2386,7 @@ function protein_mw(proteinSequence) {
     
       result = result + water; //add the weight of water for the ends of the protein.
       result = result / 1000; //convert to kilodaltons.
-      result = result.toFixed(2);
+      result = result.toFixed(3);
       return result;
     }
 }
