@@ -3313,6 +3313,7 @@ function Mutation2Codon(dnaSequence,mutationlist) {
   *@param {false} isPhosphorylated default (false)
   *@return primer stats
   *@customfunction
+  *@private
 */
 function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
     //Nucleotide Code: Base:
@@ -4227,10 +4228,10 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
       var endGapPenalty = 0;
     
       var returnHash = {};
-      returnHash["report selfcomp"] = "";
-      returnHash["upper selfcomp"] = "";
+      returnHash["report  selfcomp"] = "";
+      returnHash["upper   selfcomp"] = "";
       returnHash["divider selfcomp"] = "";
-      returnHash["lower selfcomp"] = "";
+      returnHash["lower   selfcomp"] = "";
     
       var report = "";
       var hasProblem = false;
@@ -4314,10 +4315,10 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
         report = "Pass";
       }
     
-      returnHash["report selfcomp"] = report;
-      returnHash["upper selfcomp"] = alignment.getAlignedM(); //seqAligned;
-      returnHash["lower selfcomp"] = alignment.getAlignedN(); //revAligned;
-      returnHash["divider selfcomp"] = divider.join("");
+      returnHash["report  selfcomp"] = report;
+      returnHash["upper   selfcomp"] = alignment.getAlignedM(); //seqAligned;
+      returnHash["lower   selfcomp"] = alignment.getAlignedN(); //revAligned;
+      returnHash["divider selfcomp"] = divider.join("-").replace(/ /g,'');
     
 //      return returnHash;
 //      return score+";"+alignment.getAlignedM()+";"+alignment.getAlignedN();
@@ -4332,10 +4333,10 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
       var lower = new Array();
     
       var returnHash = {};
-      returnHash["report hairpin"] = "";
-      returnHash["upper hairpin"] = "";
+      returnHash["report  hairpin"] = "";
+      returnHash["upper   hairpin"] = "";
       returnHash["divider hairpin"] = "";
-      returnHash["lower hairpin"] = "";
+      returnHash["lower   hairpin"] = "";
     
       var topScore = 0;
       var score;
@@ -4449,10 +4450,10 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
         topScoreLoop = ")";
       }
     
-      returnHash["report hairpin"] = report;
-      returnHash["upper hairpin"] = topScoreUpper.replace(/ /g,'-');
-      returnHash["divider hairpin"] = divider.join("") + topScoreLoop;
-      returnHash["lower hairpin"] = topScoreLower.replace(/ /g,'-');;
+      returnHash["report  hairpin"] = report;
+      returnHash["upper   hairpin"] = topScoreUpper.replace(/ /g,'-');
+      returnHash["divider hairpin"] = divider.join("-").replace(/ /g,'') + topScoreLoop;
+      returnHash["lower   hairpin"] = topScoreLower.replace(/ /g,'-');;
     
 //      return returnHash;
       return JSON.stringify(returnHash).substring(1,JSON.stringify(returnHash).length-1);
@@ -4501,29 +4502,128 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
     var selfCompHash = _getSelfComplementarityReport(newDna, 3, 50);
     var hairpinHash = _getHairpinReport(newDna, 3, 50);
     
+//    output_array=[];
+//    output_array.push(newDna.length);
+//    output_array.push(percentGC);
+//    output_array.push(_baseCounts(newDna));
+//    output_array.push(_molecularWeight(newDna, isPhosphorylated));
+//    output_array.push(_nmolPerA260(newDna));
+//    output_array.push(_microgramsPerA260(newDna, isPhosphorylated));
+//    output_array.push(_basicTm(newDna));
+//    output_array.push(_molarSaltAdjustedTm(newDna, molarSalt));
+//    output_array.push(nearestNeighborTm);
+//    output_array.push(selfCompHash.replace(/"/g,''));
+//    output_array.push(hairpinHash.replace(/"/g,''));
+
+    
     var output = {};
-    output["length"]=":"+newDna.length;
-    output["GC content (%)"]=":"+percentGC;
-    output["Base counts"]=":"+_baseCounts(newDna);
-    output["Molecular weight (Daltons)"]=":"+_molecularWeight(newDna, isPhosphorylated);
-    output["nmol/A260"]=":"+_nmolPerA260(newDna);
-    output["micrograms/A260"]=":"+_microgramsPerA260(newDna, isPhosphorylated);
-    output["Basic Tm (degrees C)"]=":"+_basicTm(newDna);
-    output["Salt adjusted Tm (degrees C)"]=":"+_molarSaltAdjustedTm(newDna, molarSalt);
-    output["Nearest neighbor Tm (degrees C)"]=":"+nearestNeighborTm;
-    output["Single base runs"]=":"+_getBaseRunsReport(newDna, 5);
-    output["Dinucleotide base runs"]=":"+_getDiNucleotideRunsReport(newDna, 5);
-    output["Length report"]=":"+_getSuitableLengthReport(newDna, 14, 30);
-    output["Percent GC"]=":"+_getSuitableGCReport(newDna, percentGC, 40, 60);
-    output["Tm (Nearest neighbor)"]=":"+_getSuitableTmReport(newDna, nearestNeighborTm, 50, 58);
-    output["GC clamp"]=":"+_getSuitableThreePrimeGC(newDna, 1, 3);
+    output["length"]=""+newDna.length;
+    output["GC content (%)"]=""+percentGC;
+    output["Base counts"]=""+_baseCounts(newDna);
+    output["Molecular weight (Daltons)"]=""+_molecularWeight(newDna, isPhosphorylated);
+    output["nmol/A260"]=""+_nmolPerA260(newDna);
+    output["micrograms/A260"]=""+_microgramsPerA260(newDna, isPhosphorylated);
+    output["Basic Tm (degrees C)"]=""+_basicTm(newDna);
+    output["Salt adjusted Tm (degrees C)"]=""+_molarSaltAdjustedTm(newDna, molarSalt);
+    output["Nearest neighbor Tm (degrees C)"]=""+nearestNeighborTm;
+    output["Single base runs"]=""+_getBaseRunsReport(newDna, 5);
+    output["Dinucleotide base runs"]=""+_getDiNucleotideRunsReport(newDna, 5);
+    output["Length report"]=""+_getSuitableLengthReport(newDna, 14, 30);
+    output["Percent GC"]=""+_getSuitableGCReport(newDna, percentGC, 40, 60);
+    output["Tm (Nearest neighbor)"]=""+_getSuitableTmReport(newDna, nearestNeighborTm, 50, 58);
+    output["GC clamp"]=""+_getSuitableThreePrimeGC(newDna, 1, 3);
     //join hash in someway
     // https://stackoverflow.com/questions/5612787/converting-an-object-to-a-string
 //    https://stackoverflow.com/questions/29737024/json-stringifyarray-surrounded-with-square-brackets/29737150
     return (JSON.stringify(output).substring(1,JSON.stringify(output).length-1)+","+selfCompHash+","+hairpinHash).replace(/"/g,'');
+//    return output_array.join(",");
   }
 }
 
+//primer_Tm
+/**
+  *Function to return Tm value
+  *
+  *@param {string} dnaSequence Input DNA primer one letter sequence
+  *@return the nearest neighbor Tm value of primer
+  *@customfunction
+*/
+function primer_Tm(dnaSequence) {
+ if (dnaSequence.map) {
+    return dnaSequence.map(primer_Tm);
+  } else {
+   var pcrPrimerStats_array=pcrPrimerStats(dnaSequence).split(",");
+   return pcrPrimerStats_array[8].split(":")[1];
+  }
+}
+
+//primer_GC
+/**
+  *Function to return GC%
+  *
+  *@param {string} dnaSequence Input DNA primer one letter sequence
+  *@return GC% of primer
+  *@customfunction
+*/
+function primer_GC(dnaSequence) {
+ if (dnaSequence.map) {
+    return dnaSequence.map(primer_GC);
+  } else {
+   var pcrPrimerStats_array=pcrPrimerStats(dnaSequence).split(",");
+   return pcrPrimerStats_array[1].split(":")[1];
+  }
+}
+
+//primer_MW
+/**
+  *Function to return MW (Da) of primer, similar to dna_MW with single strand
+  *
+  *@param {string} dnaSequence Input DNA primer one letter sequence
+  *@return MW (Da) of primer
+  *@customfunction
+*/
+function primer_MW(dnaSequence) {
+ if (dnaSequence.map) {
+    return dnaSequence.map(primer_MW);
+  } else {
+   var pcrPrimerStats_array=pcrPrimerStats(dnaSequence).split(",");
+   return pcrPrimerStats_array[3].split(":")[1];
+  }
+}
+
+//primer_selfComp
+/**
+  *Function to report selfComp of a primer
+  *
+  *@param {string} dnaSequence Input DNA primer one letter sequence
+  *@return selfComp report of primer
+  *@customfunction
+*/
+function primer_selfComp(dnaSequence) {
+ if (dnaSequence.map) {
+    return dnaSequence.map(primer_selfComp);
+  } else {
+   var pcrPrimerStats_array=pcrPrimerStats(dnaSequence).split(",");
+   return pcrPrimerStats_array[15]+"\n"+pcrPrimerStats_array[16]+"\n"+pcrPrimerStats_array[17]+"\n"+pcrPrimerStats_array[18];
+  }
+}
+
+//primer_Hairpin
+/**
+  *Function to report Hairpin of a primer
+  *
+  *@param {string} dnaSequence Input DNA primer one letter sequence
+  *@return Hairpin report of primer
+  *@customfunction
+*/
+function primer_Hairpin(dnaSequence) {
+ if (dnaSequence.map) {
+    return dnaSequence.map(primer_Hairpin);
+  } else {
+   var pcrPrimerStats_array=pcrPrimerStats(dnaSequence).split(",");
+   return pcrPrimerStats_array[19]+"\n"+pcrPrimerStats_array[20]+"\n"+pcrPrimerStats_array[21]+"\n"+pcrPrimerStats_array[22];
+  }
+}
 
 ////general template for dna
 ////https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/pcr_primer_stats.js
