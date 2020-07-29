@@ -7383,7 +7383,7 @@ code {
 			<li class="dropdown">
 				<a href="global.html" class="dropdown-toggle" data-toggle="dropdown">Global<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="#clean_peptide">clean_peptide</a></li><li><a href="#complement">complement</a></li><li><a href="#convertDegenerates">convertDegenerates</a></li><li><a href="#dna_mod">dna_mod</a></li><li><a href="#dnaMw">dnaMw</a></li><li><a href="#dnaStats">dnaStats</a></li><li><a href="#MolarExtinction">MolarExtinction</a></li><li><a href="#Mutation2Codon">Mutation2Codon</a></li><li><a href="#Mutation2Seq">Mutation2Seq</a></li><li><a href="#pairwiseAlignDna">pairwiseAlignDna</a></li><li><a href="#pairwiseAlignProtein">pairwiseAlignProtein</a></li><li><a href="#pcrPrimerStats">pcrPrimerStats</a></li><li><a href="#peptide_Cmod">peptide_Cmod</a></li><li><a href="#peptide_intern_mod">peptide_intern_mod</a></li><li><a href="#peptide_Nmod">peptide_Nmod</a></li><li><a href="#protein_mw">protein_mw</a></li><li><a href="#proteinGravy">proteinGravy</a></li><li><a href="#proteinIep">proteinIep</a></li><li><a href="#proteinStats">proteinStats</a></li><li><a href="#restSummary">restSummary</a></li><li><a href="#revComp">revComp</a></li><li><a href="#reverse">reverse</a></li><li><a href="#Seq1">Seq1</a></li><li><a href="#Seq3">Seq3</a></li><li><a href="#SeqDiff">SeqDiff</a></li><li><a href="#translate">translate</a></li>
+					<li><a href="#clean_peptide">clean_peptide</a></li><li><a href="#complement">complement</a></li><li><a href="#convertDegenerates">convertDegenerates</a></li><li><a href="#dna_mod">dna_mod</a></li><li><a href="#dnaMw">dnaMw</a></li><li><a href="#dnaStats">dnaStats</a></li><li><a href="#MolarExtinction">MolarExtinction</a></li><li><a href="#Mutation2Codon">Mutation2Codon</a></li><li><a href="#Mutation2Seq">Mutation2Seq</a></li><li><a href="#pairwiseAlignDna">pairwiseAlignDna</a></li><li><a href="#pairwiseAlignProtein">pairwiseAlignProtein</a></li><li><a href="#peptide_Cmod">peptide_Cmod</a></li><li><a href="#peptide_intern_mod">peptide_intern_mod</a></li><li><a href="#peptide_Nmod">peptide_Nmod</a></li><li><a href="#primer_GC">primer_GC</a></li><li><a href="#primer_Hairpin">primer_Hairpin</a></li><li><a href="#primer_MW">primer_MW</a></li><li><a href="#primer_selfComp">primer_selfComp</a></li><li><a href="#primer_Tm">primer_Tm</a></li><li><a href="#protein_mw">protein_mw</a></li><li><a href="#proteinGravy">proteinGravy</a></li><li><a href="#proteinIep">proteinIep</a></li><li><a href="#proteinStats">proteinStats</a></li><li><a href="#restSummary">restSummary</a></li><li><a href="#revComp">revComp</a></li><li><a href="#reverse">reverse</a></li><li><a href="#Seq1">Seq1</a></li><li><a href="#Seq3">Seq3</a></li><li><a href="#SeqDiff">SeqDiff</a></li><li><a href="#translate">translate</a></li>
 				</ul>
 			</li>
 			
@@ -8907,7 +8907,7 @@ code {
 
     
     <div class="description">
-        <p>Function to determines the optimal global alignment of two dna sequences.<br>
+        <p>Function to determines the optimal global alignment of two dna sequences. Use google sheet buildin function split(alignment,CHAR(10)) in to access individual aligned sequence, and arrayformula( regexextract(A1 &amp; &quot;&quot;, rept(&quot;(.)&quot;, len(A1)))) to convert to Char<br>
 <a href="http://www.bioinformatics.org/sms2/pairwise_align_dna.html">http://www.bioinformatics.org/sms2/pairwise_align_dna.html</a></p>
     </div>
     
@@ -9229,7 +9229,7 @@ code {
 
     
     <div class="description">
-        <p>Function to determines the optimal global alignment of two protein sequences.<br>
+        <p>Function to determines the optimal global alignment of two protein sequences. Use google sheet buildin function split(alignment,CHAR(10)) in to access individual aligned sequence, and arrayformula( regexextract(A1 &amp; &quot;&quot;, rept(&quot;(.)&quot;, len(A1)))) to convert to Char<br>
 <a href="http://www.bioinformatics.org/sms2/pairwise_align_protein.html">http://www.bioinformatics.org/sms2/pairwise_align_protein.html</a></p>
     </div>
     
@@ -9501,182 +9501,6 @@ code {
             
 <div class="param-desc">
     <p>alignment of two protein</p>
-</div>
-
-
-
-
-        
-
-    
-</dd>
-
-        
-            
-<hr>
-<dt>
-    <h4 class="name" id="pcrPrimerStats"><span class="type-signature"></span>pcrPrimerStats(dnaSequence, isPhosphorylated)</h4>
-    
-    
-</dt>
-<dd>
-
-    
-    <div class="description">
-        <p>Function to report describe the properties of a primer, including melting temperature, percent GC content, and PCR suitability.<br>
-<a href="http://www.bioinformatics.org/sms2/pcr_primer_stats.html">http://www.bioinformatics.org/sms2/pcr_primer_stats.html</a></p>
-    </div>
-    
-
-    
-
-    
-
-    
-    
-        <h5>Parameters:</h5>
-        
-
-<table class="params table table-striped">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-        <th>Default</th>
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>dnaSequence</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                </td>
-            
-
-            <td class="description last"><p>Input DNA sequence</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>isPhosphorylated</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">false</span>
-
-
-
-            
-            </td>
-
-            
-
-            
-                <td class="default">
-                
-                    false
-                
-                </td>
-            
-
-            <td class="description last"><p>default (false)</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-    
-
-    
-<dl class="details">
-    
-
-	
-
-	
-
-	
-
-    
-
-    
-
-    
-
-    
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
-	
-
-	
-
-	
-
-	
-</dl>
-
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <h5>Returns:</h5>
-    
-            
-<div class="param-desc">
-    <p>primer stats</p>
 </div>
 
 
@@ -10094,6 +9918,701 @@ code {
             
 <div class="param-desc">
     <p>N-term</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="primer_GC"><span class="type-signature"></span>primer_GC(dnaSequence)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Function to return GC%</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dnaSequence</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Input DNA primer one letter sequence</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>GC% of primer</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="primer_Hairpin"><span class="type-signature"></span>primer_Hairpin(dnaSequence)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Function to report Hairpin of a primer</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dnaSequence</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Input DNA primer one letter sequence</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Hairpin report of primer</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="primer_MW"><span class="type-signature"></span>primer_MW(dnaSequence)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Function to return MW (Da) of primer, similar to dna_MW with single strand</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dnaSequence</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Input DNA primer one letter sequence</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>MW (Da) of primer</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="primer_selfComp"><span class="type-signature"></span>primer_selfComp(dnaSequence)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Function to report selfComp of a primer</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dnaSequence</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Input DNA primer one letter sequence</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>selfComp report of primer</p>
+</div>
+
+
+
+
+        
+
+    
+</dd>
+
+        
+            
+<hr>
+<dt>
+    <h4 class="name" id="primer_Tm"><span class="type-signature"></span>primer_Tm(dnaSequence)</h4>
+    
+    
+</dt>
+<dd>
+
+    
+    <div class="description">
+        <p>Function to return Tm value</p>
+    </div>
+    
+
+    
+
+    
+
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>dnaSequence</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>Input DNA primer one letter sequence</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+    
+
+    
+<dl class="details">
+    
+
+	
+
+	
+
+	
+
+    
+
+    
+
+    
+
+    
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>the nearest neighbor Tm value of primer</p>
 </div>
 
 

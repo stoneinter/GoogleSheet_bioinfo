@@ -2503,7 +2503,7 @@ function Seq1(proteinSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/protein_stats.js
 //http://www.bioinformatics.org/sms2/protein_stats.html
 /**
-  *Function to calculate protein stats. 
+  *Function to calculate protein stats. Use arrayformula(split(transpose(split(A1,";")),":")) to format pretty tables in google sheet
   *{@link http://www.bioinformatics.org/sms2/protein_stats.html}
   *
   *@param {string} proteinSequence Input Protein one letter sequence
@@ -2578,7 +2578,7 @@ function proteinStats(proteinSequence) {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/dna_stats.js
 //http://www.bioinformatics.org/sms2/dna_stats.html
 /**
-  *Function to DNA stats of a sequence. 
+  *Function to DNA stats of a sequence. Use arrayformula(split(transpose(split(A1,";")),":")) to format pretty tables in google sheet
   *{@link http://www.bioinformatics.org/sms2/dna_stats.html}
   *
   *@param {string} dnaSequence Input DNA sequence
@@ -3033,7 +3033,7 @@ function dnaMw(sequence,strandType="double",topology="linear") {
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/pairwise_align_protein.js
 //http://www.bioinformatics.org/sms2/pairwise_align_protein.html
 /**
-  *Function to determines the optimal global alignment of two protein sequences. 
+  *Function to determines the optimal global alignment of two protein sequences. Use google sheet buildin function split(alignment,CHAR(10)) in to access individual aligned sequence, and arrayformula( regexextract(A1 & "", rept("(.)", len(A1)))) to convert to Char
   *{@link http://www.bioinformatics.org/sms2/pairwise_align_protein.html}
   *
   *@param {string} proteinSequenceOne Input Protein One
@@ -3096,7 +3096,7 @@ function pairwiseAlignProtein(proteinSequenceOne,proteinSequenceTwo,matrix="blos
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/pairwise_align_dna.js
 //http://www.bioinformatics.org/sms2/pairwise_align_dna.html
 /**
-  *Function to determines the optimal global alignment of two dna sequences. 
+  *Function to determines the optimal global alignment of two dna sequences. Use google sheet buildin function split(alignment,CHAR(10)) in to access individual aligned sequence,and arrayformula( regexextract(A1 & "", rept("(.)", len(A1)))) to convert to Char.
   *{@link http://www.bioinformatics.org/sms2/pairwise_align_dna.html}
   *
   *@param {string} dnaSequenceOne Input DNA One
@@ -3164,7 +3164,7 @@ function pairwiseAlignDna(dnaSequenceOne,dnaSequenceTwo,matchScore=2,mismatchSco
 //https://github.com/paulstothard/sequence_manipulation_suite/blob/655ff5cce6bb9eae9928dadc1a8f586ba67bd11b/docs/scripts/rest_summary.js
 //http://www.bioinformatics.org/sms2/rest_summary.html
 /**
-  *Function to returns the number of commonly used restriction endonuclease cut sites of input DNA sequences.
+  *Function to returns the number of commonly used restriction endonuclease cut sites of input DNA sequences. Use arrayformula(split(transpose(split(A1,";"))," ")) to format pretty tables in google sheet.
   *{@link  http://www.bioinformatics.org/sms2/rest_summary.html}
   *
   *@param {string} dnaSequence Input DNA sequence
@@ -4282,7 +4282,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
           contiguous++;
           totalMatches++;
         } else {
-          divider.push(" ");
+          divider.push("-");
           contiguous = 0;
         }
     
@@ -4318,7 +4318,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
       returnHash["report  selfcomp"] = report;
       returnHash["upper   selfcomp"] = alignment.getAlignedM(); //seqAligned;
       returnHash["lower   selfcomp"] = alignment.getAlignedN(); //revAligned;
-      returnHash["divider selfcomp"] = divider.join("-").replace(/ /g,'');
+      returnHash["divider selfcomp"] = divider.join("");
     
 //      return returnHash;
 //      return score+";"+alignment.getAlignedM()+";"+alignment.getAlignedN();
@@ -4416,7 +4416,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
           contiguous++;
           totalMatches++;
         } else {
-          divider.push(" ");
+          divider.push("-");
           contiguous = 0;
         }
     
@@ -4452,7 +4452,7 @@ function pcrPrimerStats(dnaSequence,isPhosphorylated=false) {
     
       returnHash["report  hairpin"] = report;
       returnHash["upper   hairpin"] = topScoreUpper.replace(/ /g,'-');
-      returnHash["divider hairpin"] = divider.join("-").replace(/ /g,'') + topScoreLoop;
+      returnHash["divider hairpin"] = divider.join("") + topScoreLoop;
       returnHash["lower   hairpin"] = topScoreLower.replace(/ /g,'-');;
     
 //      return returnHash;
@@ -4999,3 +4999,4 @@ function dna_mod(dnaSequence) {
 
 //need to implement test functions in case it breaks
 //need to find ways to do heavy lifting ( API ) or run python or R in googlesheet tutorial
+
